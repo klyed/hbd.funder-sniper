@@ -1,0 +1,24 @@
+{
+  "name": "hbd.funder-sniper",
+  "version": "0.0.3",
+  "description": "A small / light weight NodeJS utility bot capable of monitoring the HIVE blockchain with minimal user input required.",
+  "main": "sniper.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klyed/hbd.funder-sniper.git"
+  },
+  "author": "@KLYE",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/klyed/hbd.funder-sniper/issues"
+  },
+  "homepage": "https://github.com/klyed/hbd.funder-sniper#readme",
+  "dependencies": {
+    "@hiveio/hive-js": "^0.8.13",
+    "dotenv": "^8.5.1",
+    "node-datetime": "^2.1.2"
+  }
+}
