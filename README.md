@@ -9,7 +9,8 @@ If you need to download NodeJS, here is a link: https://nodejs.org/en/download/ 
 Once you have that installed and this folder downloaded remember to "npm install" in Powershell, Windows CMD or whatever Bash or Linux distro you like.
 
 
-#**CONFIG**
+**CONFIG**
+
 Please put your HIVE account name and private posting key into the .env.example config file then remove the ".example" part at the end:
 
 ```
@@ -24,7 +25,7 @@ If you wish to close the program for whatever reason use ctrl+c in your console 
 *This is mostly done just so I can see who all is utilizing this script to maximize their curation rewards and not so much for monetary gain*
 
 
-##TL;DR:
+# TL;DR:
 Install NodeJS
 Download this app from github.com/klyed/hbd.funder-sniper
 Open download location in console and type "npm install"
