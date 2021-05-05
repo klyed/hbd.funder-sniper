@@ -100,7 +100,7 @@ async function changenode() {
         //decrease the pendingvote variable by 1
         pendingvote--;
         //broadcast a vote on the comment detected
-        hivejs.broadcast.vote(herowifkey, hero, op["author"], op["permlink"], , function(err, result) { //10000 is 100% vote power
+        hivejs.broadcast.vote(herowifkey, hero, op["author"], op["permlink"], voteweight, function(err, result) { //10000 is 100% vote power
           //display the outcome of the vote on the comment
           console.log(err, result);
         });//END hivejs.broadcast.vote
