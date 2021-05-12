@@ -62,16 +62,17 @@ async function changenode() {
     apiindex = 0;
   }//END else if (apiindex == apinodes.length)
   //update the HIVE API node we are using
-  await hivejs.api.setOptions({url:`https://${apinodes[apiindex]}`});
+
   //show that the HIVE API node has been changed
   console.log(`CHAIN: Changed API Node to ${apinodes[apiindex]}`);
+  return hivejs.api.setOptions({url:`https://${apinodes[apiindex]}`});
 };//END async function changenode()
 
   //get the current date to display at start
   var starttime = dt.format('Y-m-d H:M:S');
 
   //display what this applet is and who made it
-  console.log("HBD.Funder Post Sniper v0.0.3 - By @KLYE");
+  console.log("HBD.Funder Post Sniper v0.0.4 - By @KLYE");
   //display the start time of the applet
   console.log("Start Time: " + starttime + "\n");
 
@@ -81,31 +82,40 @@ async function changenode() {
     if (targetaccts.includes(op["author"])) {
       //increase the pendingvote variable by 1
       pendingvote++;
-      //display that a comment from the targetr account has been detected
-      console.log("-------------------------------------------------------------");
-      console.log(`--HBD.FUNDER COMMENT - Deploying a Vote in ~${(votedelay / 60000).toFixed(1)} Mins! ----`);
-      console.log("-------------------------------------------------------------");
       //checks to see if the author is KLYE
       if(op["author"] == "klye") {
-        //if it is KLYE. Set vote strength to 1%
-        voteweight = 100;
+        //display that a comment from the targetr account has been detected
+        console.log(`--KLYE COMMENT - Deploying a 0.01% Vote Now ----`);
+        //if it is KLYE. Set vote strength to .01%
+        voteweight = 1;
+          //increase the totalvote variable by 1
+          totalvote++
+          //decrease the pendingvote variable by 1
+          pendingvote--;
+          //broadcast a vote on the comment detected
+          hivejs.broadcast.vote(herowifkey, hero, op["author"], op["permlink"], voteweight, function(err, result) { //10000 is 100% vote power
+            //display the outcome of the vote on the comment
+            console.log(err, result);
+          });//END hivejs.broadcast.vote
       } else { //else if it's not KLYE
+        //display that a comment from the targetr account has been detected
+        console.log(`--HBD.FUNDER COMMENT - Deploying a 100% Vote in ~${(votedelay / 60000).toFixed(1)} Mins! ----`);
         //set vote strength to 100%
         voteweight = 10000;
+        //after a comment operation from the target accounts has been detected, schedule a vote to occur around the "optimal" time
+        setTimeout(function(){
+          //increase the totalvote variable by 1
+          totalvote++
+          //decrease the pendingvote variable by 1
+          pendingvote--;
+          //broadcast a vote on the comment detected
+          hivejs.broadcast.vote(herowifkey, hero, op["author"], op["permlink"], voteweight, function(err, result) { //10000 is 100% vote power
+            //display the outcome of the vote on the comment
+            console.log(err, result);
+          });//END hivejs.broadcast.vote
+        //set your delay after the comment is detected in milliseconds, defined above in the 'votedelay' variable
+        }, votedelay);
       }
-      //after a comment operation from the target accounts has been detected, schedule a vote to occur around the "optimal" time
-      setTimeout(function(){
-        //increase the totalvote variable by 1
-        totalvote++
-        //decrease the pendingvote variable by 1
-        pendingvote--;
-        //broadcast a vote on the comment detected
-        hivejs.broadcast.vote(herowifkey, hero, op["author"], op["permlink"], voteweight, function(err, result) { //10000 is 100% vote power
-          //display the outcome of the vote on the comment
-          console.log(err, result);
-        });//END hivejs.broadcast.vote
-      //set your delay after the comment is detected in milliseconds, defined above in the 'votedelay' variable
-      }, votedelay);
     }//END if (op["author"] == asshat)
   };//END var process_comment = function(op)
 
