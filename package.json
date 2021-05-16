@@ -18,6 +18,7 @@
   "homepage": "https://github.com/klyed/hbd.funder-sniper#readme",
   "dependencies": {
     "@hiveio/hive-js": "^0.8.13",
+    "@pm2/io": "^5.0.0",
     "dotenv": "^8.5.1",
     "node-datetime": "^2.1.2"
   }

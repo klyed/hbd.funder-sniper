@@ -11,7 +11,12 @@
 //While it does serve it's purpose, it's not terribly well optimized nor 100% stable at times, keep that in mind
 
 //Lets declare the required dependencies for the applet below...
+const io = require('@pm2/io')
 
+io.init({
+  transactions: true, // will enable the transaction tracing
+  http: true // will enable metrics about the http server (optional)
+})
 //used to monitor and interact with the HIVE blockchain
 var hivejs = require("@hiveio/hive-js");
 //used to generate timestamps
