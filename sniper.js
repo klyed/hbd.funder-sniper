@@ -44,7 +44,7 @@ var opgrab;
 var voteweight = 10000; //10000 equals 100% vote strength
 
 //declare the amount of time in milliseconds to delay your vote after comment is detected
-var votedelay = 300000; //300000 milliseconds is 5 minutes
+var votedelay = 280000; //300000 milliseconds is 5 minutes
 
 //a list of public RPC nodes used to monitor and broadcast to HIVE
 const apinodes = ["hived.privex.io", "api.hivekings.com", "api.deathwing.me", "api.hive.blog", "api.openhive.network", "hive.loelandp.nl", "hive-api.arcange.eu", "rpc.ausbit.dev", "anyx.io"];
@@ -62,7 +62,6 @@ async function changenode() {
     apiindex = 0;
   }//END else if (apiindex == apinodes.length)
   //update the HIVE API node we are using
-
   //show that the HIVE API node has been changed
   console.log(`CHAIN: Changed API Node to ${apinodes[apiindex]}`);
   return hivejs.api.setOptions({url:`https://${apinodes[apiindex]}`});
@@ -164,7 +163,6 @@ async function changenode() {
     //increase the totalblocks variable by 1
     totalblocks++
     //print out the stats on what block we're on, how many blocks and operations we've parsed and also display how many pending and completed votes exist
-    process.stdout.write(`Target(s): ${targetaccts} - #${newestblock} - Blocks Monitored: ${totalblocks} - Operations: ${totalops} - Pending: ${pendingvote} - Completed: ${totalvote}`);
+    console.log(`Target(s): ${targetaccts} - #${newestblock} - Blocks Monitored: ${totalblocks} - Operations: ${totalops} - Pending: ${pendingvote} - Completed: ${totalvote}`);
     //move the console cursor back to the start to avoid writing more lines than necesarry
-    process.stdout.cursorTo(0);
   });//END hivejs.api.streamBlockNumber(async function(err1, newestblock)
