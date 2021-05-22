@@ -49,7 +49,7 @@ var opgrab;
 var voteweight = 10000; //10000 equals 100% vote strength
 
 //declare the amount of time in milliseconds to delay your vote after comment is detected
-var votedelay = 280000; //300000 milliseconds is 5 minutes
+var votedelay = 295000; //300000 milliseconds is 5 minutes
 
 //a list of public RPC nodes used to monitor and broadcast to HIVE
 const apinodes = ["hived.privex.io", "api.hivekings.com", "api.deathwing.me", "api.hive.blog", "api.openhive.network", "hive.loelandp.nl", "hive-api.arcange.eu", "rpc.ausbit.dev", "anyx.io"];
