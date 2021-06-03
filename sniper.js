@@ -162,7 +162,7 @@ async function changenode() {
   //stream the latest block number on HIVE network
   hivejs.api.streamBlockNumber(async function(err1, newestblock) {
     //if the stream fails for some reason or errors, change the HIVE API node in use
-    if(err1) changenode();
+    if(err1) console.log(err1);
     //if the newest block integer is returned, send this number to the parseBlock function above to parse it's contents
     if(newestblock) await parseBlock(newestblock);
     //increase the totalblocks variable by 1
