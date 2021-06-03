@@ -55,7 +55,7 @@ var votedelay = 200000; //300000 milliseconds is 5 minutes
 const apinodes = ["hived.privex.io", "api.hivekings.com", "api.deathwing.me", "api.hive.blog", "api.openhive.network", "hive.loelandp.nl", "hive-api.arcange.eu", "rpc.ausbit.dev", "anyx.io"];
 
 //set hivekings.com as our HIVE API node
-hivejs.api.setOptions({ url: "https://api.hivekings.com" });
+hivejs.api.setOptions({ url: "https://api.hive.blog" });
 
 //create a function that can cycle between different HIVE API nodes when function called
 async function changenode() {
